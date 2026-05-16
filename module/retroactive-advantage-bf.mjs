@@ -185,16 +185,19 @@ class RetroAdvantageBF {
 
       console.debug(`RetroBF | PASSED guards | advMode=${roll.options?.advantageMode}`);
 
-      const advantageMode = roll?.options?.advantageMode;
-      const { DISADVANTAGE, NORMAL, ADVANTAGE } = CONFIG.Dice.ChallengeDie?.MODES
-        || { DISADVANTAGE: -1, NORMAL: 0, ADVANTAGE: 1 };
+      try {
+        const advantageMode = roll?.options?.advantageMode;
+        const { DISADVANTAGE, NORMAL, ADVANTAGE } = CONFIG.Dice.ChallengeDie?.MODES
+          || { DISADVANTAGE: -1, NORMAL: 0, ADVANTAGE: 1 };
 
-      const div = document.createElement("DIV");
-      div.innerHTML = await renderTemplate("modules/retroactive-advantage-bf/module/retro-buttons.hbs", {
-        dis: advantageMode === DISADVANTAGE,
-        norm: advantageMode === NORMAL,
-        adv: advantageMode === ADVANTAGE
-      });
+        const div = document.createElement("DIV");
+        console.debug(`RetroBF | Rendering template...`);
+        div.innerHTML = await renderTemplate("modules/retroactive-advantage-bf/module/retro-buttons.hbs", {
+          dis: advantageMode === DISADVANTAGE,
+          norm: advantageMode === NORMAL,
+          adv: advantageMode === ADVANTAGE
+        });
+        console.debug(`RetroBF | Template rendered, innerHTML length=${div.innerHTML.length}`);
 
       div.querySelectorAll("[data-retro-action]").forEach(n => {
         n.addEventListener("click", RetroAdvantageBF._onClickRetroButton.bind(RetroAdvantageBF));
@@ -213,6 +216,10 @@ class RetroAdvantageBF {
 
       const cc = html.querySelector(".chat-card");
       if (cc) return cc.append(div.firstElementChild);
+
+      } catch (err) {
+        console.error(`RetroBF | ERROR in renderChatMessage:`, err);
+      }
     });
   }
 
