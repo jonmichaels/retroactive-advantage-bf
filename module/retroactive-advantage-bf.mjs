@@ -202,7 +202,14 @@ class RetroAdvantageBF {
 
       // Generic CSS selectors — try dice-roll first, then chat-card
       const dr = html.querySelector(".dice-roll");
-      if (dr) return dr.before(div.firstElementChild);
+      const dr2 = html.querySelector ? html.querySelector(".dice-result") : null;
+      const dr3 = html.querySelector ? html.querySelector(".dice-formula") : null;
+      console.debug(`RetroBF | CSS check | html.className="${html.className || '(none)'}" | .dice-roll=${!!dr} .dice-result=${!!dr2} .dice-formula=${!!dr3} | html.tagName=${html.tagName}`);
+      
+      if (dr) {
+        console.debug(`RetroBF | Inserting before .dice-roll`);
+        return dr.before(div.firstElementChild);
+      }
 
       const cc = html.querySelector(".chat-card");
       if (cc) return cc.append(div.firstElementChild);
