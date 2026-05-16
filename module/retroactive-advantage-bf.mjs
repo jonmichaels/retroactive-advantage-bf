@@ -199,22 +199,26 @@ class RetroAdvantageBF {
         });
         console.debug(`RetroBF | Template rendered, innerHTML length=${div.innerHTML.length}`);
 
+        // Determine if html is DOM Element or jQuery — must handle both
+        const isJQuery = typeof html.querySelector !== "function";
+        const findEl = isJQuery ? (sel) => html.find(sel)[0] || null : (sel) => html.querySelector(sel);
+        const getClass = isJQuery ? () => html.attr("class") || "" : () => html.className || "";
+        console.debug(`RetroBF | html type: isJQuery=${isJQuery} tag=${isJQuery ? html.prop("tagName") : html.tagName}`);
+
         div.querySelectorAll("[data-retro-action]").forEach(n => {
           n.addEventListener("click", RetroAdvantageBF._onClickRetroButton.bind(RetroAdvantageBF));
         });
 
         // Generic CSS selectors — try dice-roll first, then chat-card
-        const dr = html.querySelector(".dice-roll");
-        const dr2 = html.querySelector ? html.querySelector(".dice-result") : null;
-        const dr3 = html.querySelector ? html.querySelector(".dice-formula") : null;
-        console.debug(`RetroBF | CSS check | html.className="${html.className || '(none)'}" | .dice-roll=${!!dr} .dice-result=${!!dr2} .dice-formula=${!!dr3} | html.tagName=${html.tagName}`);
-        
+        const dr = findEl(".dice-roll");
+        console.debug(`RetroBF | CSS check | class="${getClass()}" | .dice-roll=${!!dr} | htmlType=${isJQuery ? "jQuery" : "Element"}`);
+
         if (dr) {
           console.debug(`RetroBF | Inserting before .dice-roll`);
           return dr.before(div.firstElementChild);
         }
 
-        const cc = html.querySelector(".chat-card");
+        const cc = findEl(".chat-card");
         if (cc) {
           console.debug(`RetroBF | Inserting into .chat-card`);
           return cc.append(div.firstElementChild);
