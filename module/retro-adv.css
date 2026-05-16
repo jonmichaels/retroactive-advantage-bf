@@ -3,31 +3,20 @@
   flex-direction: row;
   margin: 0;
   padding: 0;
-  gap: 2px;
+  gap: 1px;
 }
 
 .retro-adv-buttons .retro-adv-button {
   flex: 1;
   font-size: 9px;
   height: 1.3rem;
-  line-height: 1;
-  padding: 0 2px;
-  border: 1px solid var(--bf-color-border, #999);
-  border-radius: 3px;
-  background: var(--bf-color-bg-light, rgba(255,255,255,0.1));
-  color: var(--bf-color-text, #ddd);
-  cursor: pointer;
-}
-
-.retro-adv-buttons .retro-adv-button:hover:not(:disabled) {
-  background: var(--bf-color-bg-hover, rgba(255,255,255,0.2));
+  line-height: 1.3rem;
 }
 
 .retro-adv-buttons .retro-adv-button:disabled {
-  background: linear-gradient(to right, var(--bf-color-accent, #444), var(--bf-color-accent-dark, #222));
-  color: white;
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--color-text-dark-secondary, #666);
   cursor: default;
-  opacity: 0.7;
 }
 
 .message-content > .retro-adv-buttons {
