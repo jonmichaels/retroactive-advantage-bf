@@ -166,11 +166,24 @@ class RetroAdvantageBF {
      * @param {HTMLElement} html      The element of the message.
      */
     Hooks.on("renderChatMessage", async (message, html) => {
-      if (!(message.isAuthor || message.isOwner) || !message.rolls?.length) return;
+      // DEBUG: trace every renderChatMessage call
+      const rollsLength = message.rolls?.length ?? 0;
+      const isRoll = message.isRoll ?? false;
+      console.debug(`RetroBF | renderChatMessage | isAuthor=${!!message.isAuthor} isOwner=${!!message.isOwner} isRoll=${isRoll} rollsLength=${rollsLength} type=${message.type}`);
+
+      if (!(message.isAuthor || message.isOwner) || !isRoll) {
+        console.debug(`RetroBF | Guard 1 FAILED`);
+        return;
+      }
 
       const [roll] = message.rolls;
-      // Generic d20 detection — works for Black Flag ChallengeRoll, dnd5e D20Roll, etc.
-      if (!(roll instanceof Roll) || roll.terms[0]?.faces !== 20) return;
+      const isD20 = roll && (roll instanceof Roll || roll instanceof foundry.dice.Roll) && roll.terms[0]?.faces === 20;
+      if (!isD20) {
+        console.debug(`RetroBF | Guard 2 FAILED | instanceof Roll=${roll instanceof Roll} typeof=${typeof roll} faces=${roll?.terms?.[0]?.faces} hasRoll=${!!roll}`);
+        return;
+      }
+
+      console.debug(`RetroBF | PASSED guards | advMode=${roll.options?.advantageMode}`);
 
       const advantageMode = roll?.options?.advantageMode;
       const { DISADVANTAGE, NORMAL, ADVANTAGE } = CONFIG.Dice.ChallengeDie?.MODES
