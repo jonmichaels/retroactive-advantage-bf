@@ -166,7 +166,7 @@ class RetroAdvantageBF {
      * @param {HTMLElement} html      The element of the message.
      */
     Hooks.on("renderChatMessage", async (message, html) => {
-      if (!(message.isAuthor || message.isOwner) || !message.isRoll) return;
+      if (!(message.isAuthor || message.isOwner) || !message.rolls?.length) return;
 
       const [roll] = message.rolls;
       // Generic d20 detection — works for Black Flag ChallengeRoll, dnd5e D20Roll, etc.
