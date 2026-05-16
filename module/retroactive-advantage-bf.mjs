@@ -186,7 +186,11 @@ class RetroAdvantageBF {
           : (sel) => html.find(sel)[0] || null;
 
         const dr = findEl(".dice-roll");
-        if (dr) return dr.before(div.firstElementChild);
+        if (dr) {
+          // Prepend into .dice-roll so buttons inherit dice-roll button styling
+          dr.insertBefore(div.firstElementChild, dr.firstChild);
+          return;
+        }
 
         const cc = findEl(".chat-card");
         if (cc) return cc.append(div.firstElementChild);

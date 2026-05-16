@@ -1,4 +1,4 @@
-.retro-adv-buttons {
+.retro-adv {
   display: flex;
   flex-direction: row;
   margin: 0;
@@ -6,19 +6,19 @@
   gap: 1px;
 }
 
-.retro-adv-buttons .retro-adv-button {
+.retro-adv button {
   flex: 1;
   font-size: 9px;
   height: 1.3rem;
   line-height: 1.3rem;
 }
 
-.retro-adv-buttons .retro-adv-button:disabled {
+.retro-adv button:disabled {
   background: rgba(0, 0, 0, 0.3);
   color: var(--color-text-dark-secondary, #666);
   cursor: default;
 }
 
-.message-content > .retro-adv-buttons {
+.message-content > .retro-adv {
   margin-bottom: 0.375rem;
 }

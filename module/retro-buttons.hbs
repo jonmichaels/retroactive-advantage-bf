@@ -1,22 +1,11 @@
-<div class="dice-roll">
-  <div class="dice-result">
-    <div class="dice-tooltip" style="display: none;">
-      <section class="tooltip-part">
-        <div class="dice">
-          <ol class="dice-rolls"></ol>
-        </div>
-      </section>
-    </div>
-    <div class="retro-adv-buttons">
-      <button type="button" data-retro-action="dis" class="retro-adv-button retro-adv-dis" {{#if dis}}disabled{{/if}}>
-        {{localize "RetroAdvBF.Disadvantage"}}
-      </button>
-      <button type="button" data-retro-action="norm" class="retro-adv-button retro-adv-norm" {{#if norm}}disabled{{/if}}>
-        {{localize "RetroAdvBF.Normal"}}
-      </button>
-      <button type="button" data-retro-action="adv" class="retro-adv-button retro-adv-adv" {{#if adv}}disabled{{/if}}>
-        {{localize "RetroAdvBF.Advantage"}}
-      </button>
-    </div>
-  </div>
+<div class="retro-adv">
+  <button type="button" data-retro-action="dis" {{#if dis}}disabled{{/if}}>
+    {{localize "RetroAdvBF.Disadvantage"}}
+  </button>
+  <button type="button" data-retro-action="norm" {{#if norm}}disabled{{/if}}>
+    {{localize "RetroAdvBF.Normal"}}
+  </button>
+  <button type="button" data-retro-action="adv" {{#if adv}}disabled{{/if}}>
+    {{localize "RetroAdvBF.Advantage"}}
+  </button>
 </div>
