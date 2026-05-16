@@ -27,6 +27,9 @@
   "esmodules": [
     "module/retroactive-advantage-bf.mjs"
   ],
+  "styles": [
+    "module/retro-adv.css"
+  ],
   "languages": [
     {
       "lang": "en",

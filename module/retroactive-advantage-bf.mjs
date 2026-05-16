@@ -114,13 +114,12 @@ class RetroAdvantageBF {
         || { DISADVANTAGE: -1, NORMAL: 0, ADVANTAGE: 1 };
 
       const chatMessage = game.messages.get(messageId);
-      if (!action || !chatMessage) throw new Error("RetroAdvBF: Missing Information");
+      if (!action || !chatMessage) return;
 
       const [roll] = chatMessage.rolls;
       if (!(roll instanceof Roll) || roll.terms[0]?.faces !== 20) return;
 
       let newD20Roll;
-
       const messageOptions = {
         userId: chatMessage.author,
         whisper: chatMessage.whisper,
@@ -159,31 +158,11 @@ class RetroAdvantageBF {
   static init() {
     console.log(`${RetroAdvantageBF.MODULE_NAME} | Initializing ${RetroAdvantageBF.MODULE_TITLE}`);
 
-    /**
-     * Add re-roll buttons to chat messages.
-     * Uses the generic renderChatMessage hook (works in any system).
-     * @param {ChatMessage} message   The message being rendered.
-     * @param {HTMLElement} html      The element of the message.
-     */
     Hooks.on("renderChatMessage", async (message, html) => {
-      // DEBUG: trace every renderChatMessage call
-      const rollsLength = message.rolls?.length ?? 0;
-      const isRoll = message.isRoll ?? false;
-      console.debug(`RetroBF | renderChatMessage | isAuthor=${!!message.isAuthor} isOwner=${!!message.isOwner} isRoll=${isRoll} rollsLength=${rollsLength} type=${message.type}`);
-
-      if (!(message.isAuthor || message.isOwner) || !isRoll) {
-        console.debug(`RetroBF | Guard 1 FAILED`);
-        return;
-      }
+      if (!(message.isAuthor || message.isOwner) || !message.isRoll) return;
 
       const [roll] = message.rolls;
-      const isD20 = roll && (roll instanceof Roll || roll instanceof foundry.dice.Roll) && roll.terms[0]?.faces === 20;
-      if (!isD20) {
-        console.debug(`RetroBF | Guard 2 FAILED | instanceof Roll=${roll instanceof Roll} typeof=${typeof roll} faces=${roll?.terms?.[0]?.faces} hasRoll=${!!roll}`);
-        return;
-      }
-
-      console.debug(`RetroBF | PASSED guards | advMode=${roll.options?.advantageMode}`);
+      if (!(roll instanceof Roll) || roll.terms[0]?.faces !== 20) return;
 
       try {
         const advantageMode = roll?.options?.advantageMode;
@@ -191,43 +170,28 @@ class RetroAdvantageBF {
           || { DISADVANTAGE: -1, NORMAL: 0, ADVANTAGE: 1 };
 
         const div = document.createElement("DIV");
-        console.debug(`RetroBF | Rendering template...`);
         div.innerHTML = await renderTemplate("modules/retroactive-advantage-bf/module/retro-buttons.hbs", {
           dis: advantageMode === DISADVANTAGE,
           norm: advantageMode === NORMAL,
           adv: advantageMode === ADVANTAGE
         });
-        console.debug(`RetroBF | Template rendered, innerHTML length=${div.innerHTML.length}`);
-
-        // Determine if html is DOM Element or jQuery — must handle both
-        const isJQuery = typeof html.querySelector !== "function";
-        const findEl = isJQuery ? (sel) => html.find(sel)[0] || null : (sel) => html.querySelector(sel);
-        const getClass = isJQuery ? () => html.attr("class") || "" : () => html.className || "";
-        console.debug(`RetroBF | html type: isJQuery=${isJQuery} tag=${isJQuery ? html.prop("tagName") : html.tagName}`);
 
         div.querySelectorAll("[data-retro-action]").forEach(n => {
           n.addEventListener("click", RetroAdvantageBF._onClickRetroButton.bind(RetroAdvantageBF));
         });
 
-        // Generic CSS selectors — try dice-roll first, then chat-card
-        const dr = findEl(".dice-roll");
-        console.debug(`RetroBF | CSS check | class="${getClass()}" | .dice-roll=${!!dr} | htmlType=${isJQuery ? "jQuery" : "Element"}`);
+        // Core Foundry passes jQuery; dnd5e's hook passes DOM Element — handle both
+        const findEl = typeof html.querySelector === "function"
+          ? (sel) => html.querySelector(sel)
+          : (sel) => html.find(sel)[0] || null;
 
-        if (dr) {
-          console.debug(`RetroBF | Inserting before .dice-roll`);
-          return dr.before(div.firstElementChild);
-        }
+        const dr = findEl(".dice-roll");
+        if (dr) return dr.before(div.firstElementChild);
 
         const cc = findEl(".chat-card");
-        if (cc) {
-          console.debug(`RetroBF | Inserting into .chat-card`);
-          return cc.append(div.firstElementChild);
-        }
-
-        console.debug(`RetroBF | No CSS match found — buttons not inserted`);
-
+        if (cc) return cc.append(div.firstElementChild);
       } catch (err) {
-        console.error(`RetroBF | ERROR in renderChatMessage:`, err);
+        console.error(`${RetroAdvantageBF.MODULE_NAME} | Error in renderChatMessage:`, err);
       }
     });
   }
@@ -244,7 +208,5 @@ class RetroAdvantageBF {
     this._handleChatButton(action, messageId);
   }
 }
-
-/* -------------------------------------------------- */
 
 Hooks.on("init", RetroAdvantageBF.init);
