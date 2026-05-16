@@ -1,7 +1,10 @@
 # Retroactive Advantage — Black Flag / Tales of the Valiant
 
+> **⚠️ Disclaimer:** This module was created by an AI coding agent (Hephaestus, via Hermes Agent) under the direction of Jon Michaels. While tested and functional, users should verify behavior in their own games before relying on it in critical sessions.
+
 [![Foundry VTT](https://img.shields.io/badge/Foundry-v13-orange)](https://foundryvtt.com)
 [![Black Flag](https://img.shields.io/badge/System-Black%20Flag%20%2F%20ToV-blue)](https://github.com/koboldpress/black-flag)
+[![Version](https://img.shields.io/badge/Version-1.0.0-green)](https://github.com/jonmichaels/retroactive-advantage-bf/releases)
 
 Adds Advantage / Normal / Disadvantage re-roll buttons to d20 chat messages in **Black Flag Roleplaying (Tales of the Valiant)** for Foundry VTT.
 
@@ -36,7 +39,11 @@ The currently active mode's button is disabled.
 
 ## Credits
 
-Ported from the [Retroactive Advantage 5e](https://github.com/kandashi/retroactive-advantage-5e) module by Kandashi. Adapted for Black Flag / Tales of the Valiant.
+This module is a Black Flag / Tales of the Valiant port of the D&D 5E Retroactive Advantage module.
+
+- **Original module:** [ElfFriend-DnD/foundryvtt-retroactive-advantage-5e](https://github.com/ElfFriend-DnD/foundryvtt-retroactive-advantage-5e) — created by ElfFriend-DnD (Kandashi)
+- **Updated fork:** [krbz999/foundryvtt-retroactive-advantage-5e](https://github.com/krbz999/foundryvtt-retroactive-advantage-5e) — maintained by krbz999
+- **Black Flag port:** This module — by Jon Michaels, coded by Hephaestus (AI agent)
 
 ## License
 
