@@ -5,8 +5,23 @@
   "version": "1.0.0",
   "authors": [
     {
+      "name": "Andrew Krigline",
+      "discord": "Calego#0914",
+      "url": "https://github.com/ElfFriend-DnD",
+      "ko-fi": "elffriend",
+      "patreon": "ElfFriend_DnD"
+    },
+    {
+      "name": "Zhell",
+      "discord": "zhell9201",
+      "url": "https://github.com/krbz999",
+      "ko-fi": "https://ko-fi.com/zhell",
+      "patreon": "https://patreon.com/zhell"
+    },
+    {
       "name": "Jon Michaels",
-      "discord": "jonmichaels"
+      "discord": "jonmichaels#9614",
+      "url": "https://github.com/jonmichaels"
     }
   ],
   "compatibility": {
