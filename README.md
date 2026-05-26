@@ -4,7 +4,7 @@
 
 [![Foundry VTT](https://img.shields.io/badge/Foundry-v13-orange)](https://foundryvtt.com)
 [![Black Flag](https://img.shields.io/badge/System-Black%20Flag%20%2F%20ToV-blue)](https://github.com/koboldpress/black-flag)
-[![Version](https://img.shields.io/badge/Version-1.0.0-green)](https://github.com/jonmichaels/retroactive-advantage-bf/releases)
+[![Version](https://img.shields.io/badge/Version-1.0.1-green)](https://github.com/jonmichaels/retroactive-advantage-bf/releases)
 
 Adds Advantage / Normal / Disadvantage re-roll buttons to d20 chat messages in **Black Flag Roleplaying (Tales of the Valiant)** for Foundry VTT.
 
