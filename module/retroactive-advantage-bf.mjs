@@ -170,7 +170,7 @@ class RetroAdvantageBF {
           || { DISADVANTAGE: -1, NORMAL: 0, ADVANTAGE: 1 };
 
         const div = document.createElement("DIV");
-        div.innerHTML = await renderTemplate("modules/retroactive-advantage-bf/module/retro-buttons.hbs", {
+        div.innerHTML = await foundry.applications.handlebars.renderTemplate("modules/retroactive-advantage-bf/module/retro-buttons.hbs", {
           dis: advantageMode === DISADVANTAGE,
           norm: advantageMode === NORMAL,
           adv: advantageMode === ADVANTAGE
