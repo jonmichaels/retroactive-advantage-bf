@@ -2,7 +2,7 @@
   "id": "retroactive-advantage-bf",
   "title": "Retroactive Advantage — Black Flag / Tales of the Valiant (ToV)",
   "description": "Adds Advantage / Normal / Disadvantage re-roll buttons to d20 chat messages in Black Flag Roleplaying (Tales of the Valiant) for Foundry VTT. Players can retroactively change their roll's advantage mode without re-rolling from the sheet. Ported from the D&D 5E Retroactive Advantage module.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "authors": [
     {
       "name": "Andrew Krigline",
