@@ -6,8 +6,8 @@
 - Ported from D&D 5E Retroactive Advantage modules, adapted for Black Flag Challenge Die / advantage-mode behavior.
 
 ## Runtime Targets
-- Current released target in `module.json`: Foundry v13, Black Flag v2+.
-- Current compatibility work: Foundry v14 + Black Flag v3.
+- Current `module.json` target: Foundry v13 minimum / v14 verified, Black Flag v2 minimum / v3 verified.
+- Current compatibility work: Foundry v14 + Black Flag v3 runtime testing and release prep.
 - Local project: `/home/jon/projects/retroactive-advantage-bf`.
 - v14 module symlink: `/home/jon/foundryuserdata14/Data/modules/retroactive-advantage-bf -> /home/jon/projects/retroactive-advantage-bf`.
 - v14 Foundry MCP Bridge symlink for live testing: `/home/jon/foundryuserdata14/Data/modules/foundry-mcp-bridge -> /home/jon/projects/foundry-vtt-mcp/packages/foundry-module`.

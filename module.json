@@ -26,7 +26,7 @@
   ],
   "compatibility": {
     "minimum": "13",
-    "verified": "13"
+    "verified": "14"
   },
   "relationships": {
     "systems": [
@@ -34,7 +34,8 @@
         "id": "black-flag",
         "type": "system",
         "compatibility": {
-          "minimum": "2.0.0"
+          "minimum": "2.0.0",
+          "verified": "3"
         }
       }
     ]

@@ -195,7 +195,7 @@ class RetroAdvantageBF {
         const cc = findEl(".chat-card");
         if (cc) return cc.append(div.firstElementChild);
       } catch (err) {
-        console.error(`${RetroAdvantageBF.MODULE_NAME} | Error in renderChatMessage:`, err);
+        console.error(`${RetroAdvantageBF.MODULE_NAME} | Error in renderChatMessageHTML:`, err);
       }
     });
   }
