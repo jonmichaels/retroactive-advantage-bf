@@ -22,13 +22,8 @@ Download the latest release zip and extract to `Data/modules/retroactive-advanta
 
 ## Requirements
 
-- **Foundry VTT** v13 and v14
-- **Black Flag Roleplaying** (Tales of the Valiant) system v2 and v3
-
-| Platform / System | Supported Versions |
-|-------------------|--------------------|
-| **Foundry VTT** | ✅ v13, v14 |
-| **Black Flag Roleplaying / ToV** | ✅ v2, v3 |
+- **Foundry VTT** v13 or v14
+- **Black Flag Roleplaying** (Tales of the Valiant) system v2 or v3
 
 ## How It Works
 
