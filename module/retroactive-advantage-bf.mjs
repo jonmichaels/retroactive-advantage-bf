@@ -158,7 +158,7 @@ class RetroAdvantageBF {
   static init() {
     console.log(`${RetroAdvantageBF.MODULE_NAME} | Initializing ${RetroAdvantageBF.MODULE_TITLE}`);
 
-    Hooks.on("renderChatMessage", async (message, html) => {
+    Hooks.on("renderChatMessageHTML", async (message, html) => {
       if (!(message.isAuthor || message.isOwner) || !message.isRoll) return;
 
       const [roll] = message.rolls;

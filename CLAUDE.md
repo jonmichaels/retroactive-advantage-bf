@@ -21,7 +21,7 @@
 - Localization: `lang/en.json`.
 - Main class: `RetroAdvantageBF`.
 - Init hook: `Hooks.on("init", RetroAdvantageBF.init)`.
-- Chat hook: `Hooks.on("renderChatMessage", async (message, html) => { ... })` injects buttons into d20 roll chat cards.
+- Chat hook: `Hooks.on("renderChatMessageHTML", async (message, html) => { ... })` injects buttons into d20 roll chat cards. `renderChatMessage` is deprecated in Foundry v13+ and logs warnings in v14.
 - Button click path:
   1. `data-retro-action` button click (`dis`, `norm`, `adv`)
   2. `_onClickRetroButton(event)` finds the containing chat message id
