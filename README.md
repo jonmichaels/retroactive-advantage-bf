@@ -2,9 +2,9 @@
 
 > **⚠️ Disclaimer:** This module was created by an AI coding agent (Hephaestus, via Hermes Agent) under the direction of Jon Michaels. While tested and functional, users should verify behavior in their own games before relying on it in critical sessions.
 
-[![Foundry VTT](https://img.shields.io/badge/Foundry-v13-orange)](https://foundryvtt.com)
-[![Black Flag](https://img.shields.io/badge/System-Black%20Flag%20%2F%20ToV-blue)](https://github.com/koboldpress/black-flag)
-[![Version](https://img.shields.io/badge/Version-1.0.2-green)](https://github.com/jonmichaels/retroactive-advantage-bf/releases)
+[![Foundry VTT](https://img.shields.io/badge/Foundry-v13%20%7C%20v14-orange)](https://foundryvtt.com)
+[![Black Flag](https://img.shields.io/badge/Black%20Flag-v2%20%7C%20v3-blue)](https://github.com/koboldpress/black-flag)
+[![Version](https://img.shields.io/badge/Version-v1.0.3-green)](https://github.com/jonmichaels/retroactive-advantage-bf/releases)
 
 Adds Advantage / Normal / Disadvantage re-roll buttons to d20 chat messages in **Black Flag Roleplaying (Tales of the Valiant)** for Foundry VTT.
 
@@ -22,8 +22,13 @@ Download the latest release zip and extract to `Data/modules/retroactive-advanta
 
 ## Requirements
 
-- **Foundry VTT** v13+
-- **Black Flag Roleplaying** (Tales of the Valiant) system v2.0+
+- **Foundry VTT** v13 and v14
+- **Black Flag Roleplaying** (Tales of the Valiant) system v2 and v3
+
+| Platform / System | Supported Versions |
+|-------------------|--------------------|
+| **Foundry VTT** | ✅ v13, v14 |
+| **Black Flag Roleplaying / ToV** | ✅ v2, v3 |
 
 ## How It Works
 
